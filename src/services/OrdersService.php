@@ -266,7 +266,7 @@ class OrdersService extends Component
 
 		foreach ($order->lineItems as $item)
 		{
-			if (!$item->purchasable)
+			if (!$item->purchasable || !method_exists($item->purchasable, 'getProduct'))
 				continue;
 
 			$li = [
